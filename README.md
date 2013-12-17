@@ -1,22 +1,22 @@
 plasticbox
 ==========
-Plastic Box Mod for Minetest
+Plastic Box Mod for Minetest 
 
-Written by cheapie
-Textures by VanessaE
-Licensed under WTFPL
+Written by cheapie 
+Textures by VanessaE 
+Licensed under WTFPL 
 
-Crafting:
+Crafting: 
 
--Plain Plastic Box-
+-Plain Plastic Box- 
 
-XXX
-X-X
+XXX 
+X-X 
 XXX 
 
-X is Plastic Sheets (from homedecor/pipeworks), - is nothing
-(It's a ring of plastic sheets like is done with wood for chests, if the above diagram is mangled)
+X is Plastic Sheets (from homedecor/pipeworks), - is nothing 
+(It's a ring of plastic sheets like is done with wood for chests, if the above diagram is mangled) 
 
--Colored Plastic Boxes-
+-Colored Plastic Boxes- 
 
 Plain plastic box and a dye. (shapeless)
