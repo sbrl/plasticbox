@@ -214,7 +214,8 @@ for i in ipairs(plasticbox.colorlist) do
         local colorname = plasticbox.colorlist[i][1]
         local desc = plasticbox.colorlist[i][2]
 
-                                                register_stair(
+		if minetest.get_modpath("moreblocks") then
+                        register_stair(
                                 "plasticbox",
                                 "plasticbox_"..colorname,
                                 "plasticbox:plasticbox_"..colorname,
