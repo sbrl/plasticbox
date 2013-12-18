@@ -1,3 +1,4 @@
+plasticbox = {}
 plasticbox.colorlist = {
         {"black", "Blakc Plastic Stairs"},
         {"blue", "Blue Plastic Stairs"},
