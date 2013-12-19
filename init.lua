@@ -261,5 +261,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 "plasticbox_"..colorname,
                                 0
                         )
+		table.insert(circular_saw.known_stairs, "plasticbox:plasticbox_"..colorname)
+
 	end
 end
