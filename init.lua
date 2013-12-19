@@ -1,3 +1,22 @@
+plasticbox = {}
+plasticbox.colorlist = {
+        {"black", "Black Plastic Stairs"},
+        {"blue", "Blue Plastic Stairs"},
+        {"brown", "Brown Plastic Stairs"},
+        {"cyan", "Cyan Plastic Stairs"},
+        {"green", "Green Plastic Stairs"},
+        {"grey", "Grey Plastic Stairs"},
+        {"magenta", "Magenta Plastic Stairs"},
+        {"orange", "Orange Plastic Stairs"},
+        {"pink", "Pink Plastic Stairs"},
+        {"red", "Red Plastic Stairs"},
+        {"violet", "Violet Plastic Stairs"},
+        {"white",  "White Plastic Stairs"},
+        {"yellow", "Yellow Plastic Stairs"},
+}
+
+
+
 --Register Nodes, assign textures, blah, blah...
 minetest.register_node("plasticbox:plasticbox", {
 	description = "Plain Plastic Box",
@@ -189,3 +208,114 @@ minetest.register_craft({
      output = 'plasticbox:plasticbox_yellow',
      recipe = {'plasticbox:plasticbox', 'group:basecolor_yellow'},
 })
+
+--ugly below here.
+
+if minetest.get_modpath("moreblocks") then
+                        register_stair(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+                        register_slab(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+
+                        register_panel(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+
+                        register_micro(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+		table.insert(circular_saw.known_stairs, "plasticbox:plasticbox")
+
+end
+
+
+
+for i in ipairs(plasticbox.colorlist) do
+        local colorname = plasticbox.colorlist[i][1]
+        local desc = plasticbox.colorlist[i][2]
+
+		if minetest.get_modpath("moreblocks") then
+                        register_stair(
+                                "plasticbox",
+                                "plasticbox_"..colorname,
+                                "plasticbox:plasticbox_"..colorname,
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                {        "plasticbox_"..colorname..".png",
+                                },
+                                "plasticbox_"..desc,
+                                "plasticbox_"..colorname,
+                                0
+                        )
+                        register_slab(
+                                "plasticbox",
+                                "plasticbox_"..colorname,
+                                "plasticbox:plasticbox_"..colorname,
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                {        "plasticbox_"..colorname..".png",
+                                },
+                                "plasticbox_"..desc,
+                                "plasticbox_"..colorname,
+                                0
+                        )
+
+                        register_panel(
+                                "plasticbox",
+                                "plasticbox_"..colorname,
+                                "plasticbox:plasticbox_"..colorname,
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                {        "plasticbox_"..colorname..".png",
+                                },
+                                "plasticbox_"..desc,
+                                "plasticbox_"..colorname,
+                                0
+                        )
+
+                        register_micro(
+                                "plasticbox",
+                                "plasticbox_"..colorname,
+                                "plasticbox:plasticbox_"..colorname,
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                {        "plasticbox_"..colorname..".png",
+                                },
+                                "plasticbox_"..desc,
+                                "plasticbox_"..colorname,
+                                0
+                        )
+		table.insert(circular_saw.known_stairs, "plasticbox:plasticbox_"..colorname)
+
+	end
+end
