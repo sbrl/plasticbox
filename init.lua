@@ -1,6 +1,6 @@
 plasticbox = {}
 plasticbox.colorlist = {
-        {"black", "Blakc Plastic Stairs"},
+        {"black", "Black Plastic Stairs"},
         {"blue", "Blue Plastic Stairs"},
         {"brown", "Brown Plastic Stairs"},
         {"cyan", "Cyan Plastic Stairs"},
@@ -209,6 +209,60 @@ minetest.register_craft({
      recipe = {'plasticbox:plasticbox', 'group:basecolor_yellow'},
 })
 
+--ugly below here.
+
+if minetest.get_modpath("moreblocks") then
+                        register_stair(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+                        register_slab(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+
+                        register_panel(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+
+                        register_micro(
+                                "plasticbox",
+                                "plasticbox",
+                                "plasticbox:plasticbox",
+                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
+                                { "plasticbox.png",
+                                },
+                                "plasticbox",
+                                "plasticbox",
+                                0
+                        )
+		table.insert(circular_saw.known_stairs, "plasticbox:plasticbox")
+
+end
+
+
 
 for i in ipairs(plasticbox.colorlist) do
         local colorname = plasticbox.colorlist[i][1]
@@ -220,7 +274,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 "plasticbox_"..colorname,
                                 "plasticbox:plasticbox_"..colorname,
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
-                                {        "plasticbox:plasticbox_"..colorname.."_stair.png",
+                                {        "plasticbox_"..colorname..".png",
                                 },
                                 "plasticbox_"..desc,
                                 "plasticbox_"..colorname,
@@ -231,7 +285,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 "plasticbox_"..colorname,
                                 "plasticbox:plasticbox_"..colorname,
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
-                                {        "plasticbox:plasticbox_"..colorname.."_stair.png",
+                                {        "plasticbox_"..colorname..".png",
                                 },
                                 "plasticbox_"..desc,
                                 "plasticbox_"..colorname,
@@ -243,7 +297,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 "plasticbox_"..colorname,
                                 "plasticbox:plasticbox_"..colorname,
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
-                                {        "plasticbox:plasticbox_"..colorname.."_stair.png",
+                                {        "plasticbox_"..colorname..".png",
                                 },
                                 "plasticbox_"..desc,
                                 "plasticbox_"..colorname,
@@ -255,7 +309,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 "plasticbox_"..colorname,
                                 "plasticbox:plasticbox_"..colorname,
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
-                                {        "plasticbox:plasticbox_"..colorname.."_stair.png",
+                                {        "plasticbox_"..colorname..".png",
                                 },
                                 "plasticbox_"..desc,
                                 "plasticbox_"..colorname,
