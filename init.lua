@@ -261,4 +261,5 @@ for i in ipairs(plasticbox.colorlist) do
                                 "plasticbox_"..colorname,
                                 0
                         )
+	end
 end
