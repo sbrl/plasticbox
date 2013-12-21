@@ -219,7 +219,7 @@ if minetest.get_modpath("moreblocks") then
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 { "plasticbox.png",
                                 },
-                                "plasticbox",
+                                "Plastic",
                                 "plasticbox",
                                 0
                         )
@@ -230,7 +230,7 @@ if minetest.get_modpath("moreblocks") then
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 { "plasticbox.png",
                                 },
-                                "Plastic box",
+                                "Plastic",
                                 "plasticbox",
                                 0
                         )
@@ -242,7 +242,7 @@ if minetest.get_modpath("moreblocks") then
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 { "plasticbox.png",
                                 },
-                                "Plastic box",
+                                "Plastic",
                                 "plasticbox",
                                 0
                         )
@@ -254,7 +254,7 @@ if minetest.get_modpath("moreblocks") then
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 { "plasticbox.png",
                                 },
-                                "Plastic box",
+                                "Plastic",
                                 "plasticbox",
                                 0
                         )
