@@ -1,18 +1,18 @@
 plasticbox = {}
 plasticbox.colorlist = {
-        {"black", "Black Plastic Stairs"},
-        {"blue", "Blue Plastic Stairs"},
-        {"brown", "Brown Plastic Stairs"},
-        {"cyan", "Cyan Plastic Stairs"},
-        {"green", "Green Plastic Stairs"},
-        {"grey", "Grey Plastic Stairs"},
-        {"magenta", "Magenta Plastic Stairs"},
-        {"orange", "Orange Plastic Stairs"},
-        {"pink", "Pink Plastic Stairs"},
-        {"red", "Red Plastic Stairs"},
-        {"violet", "Violet Plastic Stairs"},
-        {"white",  "White Plastic Stairs"},
-        {"yellow", "Yellow Plastic Stairs"},
+        {"black", "Black Plastic"},
+        {"blue", "Blue Plastic"},
+        {"brown", "Brown Plastic"},
+        {"cyan", "Cyan Plastic"},
+        {"green", "Green Plastic"},
+        {"grey", "Grey Plastic"},
+        {"magenta", "Magenta Plastic"},
+        {"orange", "Orange Plastic"},
+        {"pink", "Pink Plastic"},
+        {"red", "Red Plastic"},
+        {"violet", "Violet Plastic"},
+        {"white",  "White Plastic"},
+        {"yellow", "Yellow Plastic"},
 }
 
 
@@ -276,7 +276,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                "plasticbox_"..desc,
+                                ..desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
@@ -287,7 +287,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                "plasticbox_"..desc,
+                                ..desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
@@ -311,7 +311,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                "plasticbox_"..desc,
+                                ..desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
