@@ -2,9 +2,9 @@ plasticbox
 ==========
 Plastic Box Mod for Minetest 
 
-Written by cheapie 
-Textures by VanessaE 
-Licensed under WTFPL 
+* Written by cheapie and kizeren
+* Textures by VanessaE 
+* Licensed under WTFPL 
 
 Crafting: 
 
