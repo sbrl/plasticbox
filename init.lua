@@ -276,7 +276,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                ..desc,
+                                desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
@@ -287,7 +287,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                ..desc,
+                                desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
@@ -299,7 +299,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                "plasticbox_"..desc,
+                                desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
@@ -311,7 +311,7 @@ for i in ipairs(plasticbox.colorlist) do
                                 { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2 },
                                 {        "plasticbox_"..colorname..".png",
                                 },
-                                ..desc,
+                                desc,
                                 "plasticbox_"..colorname,
                                 0
                         )
