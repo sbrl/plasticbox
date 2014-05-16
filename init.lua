@@ -364,3 +364,14 @@ for i in ipairs(plasticbox.colorlist) do
 
 	end
 end
+
+--Other mods' stuff that can be crafted with plastic
+if minetest.get_modpath("bucket") then
+minetest.register_craft( {
+        output = "bucket:bucket_empty",
+        recipe = {
+                { "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" },
+                { "", "homedecor:plastic_sheeting", "" },
+        },
+})
+end
