@@ -172,7 +172,20 @@ if minetest.get_modpath("technic") then
 		technic.register_grinder_recipe({input=data[1], output=data[2]})
 	end
 else
+minetest.register_craft( {
+        output = "homedecor:plastic_sheeting 7",
+        recipe = {
+                { "plasticbox:plasticbox", "plasticbox:plasticbox" },
+                { "plasticbox:plasticbox", "plasticbox:plasticbox" },
+        },
+})
 end
+
+minetest.register_craft({
+     type = "cooking",
+     output = "homedecor:plastic_sheeting",
+     recipe = "plasticbox:plastic_powder",
+})
 
 --Register crafts for colored boxes
 minetest.register_craft({
