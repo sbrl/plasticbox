@@ -150,6 +150,16 @@ minetest.register_craft( {
 
 if minetest.get_modpath("technic") then
 	local grinder_recipes = {
+		{"pipeworks:accelerator_tube_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:conductor_tube_off_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:crossing_tube_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:detector_tube_off_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:mese_sand_tube_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:mese_tube_000000",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:one_way_tube",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:sand_tube_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:teleport_tube_1",    "plasticbox:plastic_powder 1"},
+		{"pipeworks:tube_1",    "plasticbox:plastic_powder 1"},
 		{"plasticbox:plasticbox",    "plasticbox:plastic_powder 2"},
 		{"plasticbox:plasticbox_black",    "plasticbox:plastic_powder 2"},
 		{"plasticbox:plasticbox_blue",    "plasticbox:plastic_powder 2"},
@@ -365,7 +375,7 @@ for i in ipairs(plasticbox.colorlist) do
 	end
 end
 
---Other mods' stuff that can be crafted with plastic
+--Crafting recipes involving other mods
 if minetest.get_modpath("bucket") then
 minetest.register_craft( {
         output = "bucket:bucket_empty",
