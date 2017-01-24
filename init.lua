@@ -1,142 +1,126 @@
-plasticbox = {}
-plasticbox.colorlist = {
-        {"black", "Black Plastic"},
-        {"blue", "Blue Plastic"},
-        {"brown", "Brown Plastic"},
-        {"cyan", "Cyan Plastic"},
-        {"green", "Green Plastic"},
-        {"grey", "Grey Plastic"},
-        {"magenta", "Magenta Plastic"},
-        {"orange", "Orange Plastic"},
-        {"pink", "Pink Plastic"},
-        {"red", "Red Plastic"},
-        {"violet", "Violet Plastic"},
-        {"white",  "White Plastic"},
-        {"yellow", "Yellow Plastic"},
-}
+local function getpaletteidx(color)
+	local aliases = {
+		["pink"] = "light_red",
+		["brown"] = "dark_orange",
+	}
 
+	local grayscale = {
+		["white"] = 1,
+		["light_grey"] = 2,
+		["grey"] = 3,
+		["dark_grey"] = 4,
+		["black"] = 5,
+	}
 
+	local hues = {
+		["red"] = 1,
+		["orange"] = 2,
+		["yellow"] = 3,
+		["lime"] = 4,
+		["green"] = 5,
+		["aqua"] = 6,
+		["cyan"] = 7,
+		["skyblue"] = 8,
+		["blue"] = 9,
+		["violet"] = 10,
+		["magenta"] = 11,
+		["redviolet"] = 12,
+	}
 
---Register Nodes, assign textures, blah, blah...
+	local shades = {
+		[""] = 1,
+		["s50"] = 2,
+		["light"] = 3,
+		["medium"] = 4,
+		["mediums50"] = 5,
+		["dark"] = 6,
+		["darks50"] = 7,
+	}
+
+	if string.sub(color,1,4) == "dye:" then
+		color = string.sub(color,5,-1)
+	elseif string.sub(color,1,12) == "unifieddyes:" then
+		color = string.sub(color,13,-1)
+	else
+		return
+	end
+
+	color = aliases[color] or color
+
+	if grayscale[color] then
+		return(grayscale[color])
+	end
+
+	local shade = ""
+	if string.sub(color,1,6) == "light_" then
+		shade = "light"
+		color = string.sub(color,7,-1)
+	elseif string.sub(color,1,7) == "medium_" then
+		shade = "medium"
+		color = string.sub(color,8,-1)
+	elseif string.sub(color,1,5) == "dark_" then
+		shade = "dark"
+		color = string.sub(color,6,-1)
+	end
+	if string.sub(color,-4,-1) == "_s50" then
+		shade = shade.."s50"
+		color = string.sub(color,1,-5)
+	end
+
+	if hues[color] and shades[shade] then
+		return(hues[color] * 8 + shades[shade])
+	end
+end
+
 minetest.register_node("plasticbox:plasticbox", {
-	description = "Plain Plastic Box",
-	tiles = {"plasticbox.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_black", {
-	description = "Black Plastic Box",
-	tiles = {"plasticbox_black.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_blue", {
-	description = "Blue Plastic Box",
-	tiles = {"plasticbox_blue.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_brown", {
-	description = "Brown Plastic Box",
-	tiles = {"plasticbox_brown.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_cyan", {
-	description = "Cyan Plastic Box",
-	tiles = {"plasticbox_cyan.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_darkgreen", {
-	description = "Dark Green Plastic Box",
-	tiles = {"plasticbox_darkgreen.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_darkgrey", {
-	description = "Dark Gray Plastic Box",
-	tiles = {"plasticbox_darkgrey.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_green", {
-	description = "Green Plastic Box",
-	tiles = {"plasticbox_green.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_grey", {
-	description = "Gray Plastic Box",
-	tiles = {"plasticbox_grey.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_magenta", {
-	description = "Magenta Plastic Box",
-	tiles = {"plasticbox_magenta.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_orange", {
-	description = "Orange Plastic Box",
-	tiles = {"plasticbox_orange.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_pink", {
-	description = "Pink Plastic Box",
-	tiles = {"plasticbox_pink.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_red", {
-	description = "Red Plastic Box",
-	tiles = {"plasticbox_red.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_violet", {
-	description = "Violet Plastic Box",
-	tiles = {"plasticbox_violet.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_white", {
-	description = "White Plastic Box",
+	description = "Plastic Box",
 	tiles = {"plasticbox_white.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
+	is_ground_content = false,
+	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_node("plasticbox:plasticbox_yellow", {
-	description = "Yellow Plastic Box",
-	tiles = {"plasticbox_yellow.png"},
-	is_ground_content = true,
-	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1, level=1},
-	sounds = default.node_sound_stone_defaults(),
-})
-minetest.register_craftitem("plasticbox:plastic_powder", {
-	image = "plastic_powder.png",
-    	description="Plastic Powder",
+	paramtype2 = "color",
+	palette = "plasticbox_ud_palette.png",
+	on_destruct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local prevdye = meta:get_string("dye")
+		if minetest.registered_items[prevdye] then
+			minetest.add_item(pos,prevdye)
+		end
+	end,
+	on_rightclick = function(pos,node,player,stack)
+		local name = player:get_player_name()
+		if minetest.is_protected(pos,name) and not minetest.check_player_privs(name,{protection_bypass=true}) then
+			minetest.record_protection_violation(pos,name)
+			return stack
+		end
+		local name = stack:get_name()
+		local paletteidx = getpaletteidx(name)
+		if paletteidx then
+			local meta = minetest.get_meta(pos)
+			local prevdye = meta:get_string("dye")
+			if minetest.registered_items[prevdye] then
+				local inv = player:get_inventory()
+				if inv:room_for_item("main",prevdye) then
+					inv:add_item("main",prevdye)
+				else
+					minetest.add_item(pos,prevdye)
+				end
+			end
+			meta:set_string("dye",name)
+			stack:take_item()
+			node.param2 = paletteidx
+			minetest.swap_node(pos,node)
+		end
+	end,
 })
 
+stairsplus:register_all("plasticbox", "plasticbox", "plasticbox:plasticbox", {
+	description = "Plastic",
+	tiles = {"plasticbox_white.png"},
+	groups = {choppy=1, snappy=1, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_stone_defaults(),
+})
 
---Register craft for plain box
 minetest.register_craft( {
         output = "plasticbox:plasticbox 4",
         recipe = {
@@ -146,206 +130,48 @@ minetest.register_craft( {
         },
 })
 
-
-minetest.register_craft( {
-        output = "homedecor:plastic_sheeting 7",
-        recipe = {
-                { "plasticbox:plasticbox", "plasticbox:plasticbox" },
-                { "plasticbox:plasticbox", "plasticbox:plasticbox" },
-        },
+minetest.register_lbm({
+	name = "plasticbox:convert_colors",
+	label = "Convert plastic boxes to use param2 color",
+	nodenames = {
+			"plasticbox:plasticbox_black",
+			"plasticbox:plasticbox_blue",
+			"plasticbox:plasticbox_brown",
+			"plasticbox:plasticbox_cyan",
+			"plasticbox:plasticbox_green",
+			"plasticbox:plasticbox_grey",
+			"plasticbox:plasticbox_magenta",
+			"plasticbox:plasticbox_orange",
+			"plasticbox:plasticbox_pink",
+			"plasticbox:plasticbox_red",
+			"plasticbox:plasticbox_violet",
+			"plasticbox:plasticbox_white",
+			"plasticbox:plasticbox_yellow",
+			"plasticbox:plasticbox_darkgreen",
+			"plasticbox:plasticbox_darkgrey",
+		},
+	action = function(pos,node)
+		local conv = {
+			["black"] = 5,
+			["blue"] = 73,
+			["brown"] = 22,
+			["cyan"] = 57,
+			["green"] = 41,
+			["grey"] = 3,
+			["magenta"] = 89,
+			["orange"] = 17,
+			["pink"] = 11,
+			["red"] = 9,
+			["violet"] = 81,
+			["white"] = 1,
+			["yellow"] = 25,
+			["darkgreen"] = 46,
+			["darkgrey"] = 4,
+		}
+		local name = node.name
+		local oldcolor = string.sub(name,string.len("plasticbox:plasticbox_-"),-1)
+		node.name = "plasticbox:plasticbox"
+		if conv[oldcolor] then node.param2 = conv[oldcolor] end
+		minetest.set_node(pos,node)
+	end,
 })
-
-minetest.register_craft({
-     type = "cooking",
-     output = "homedecor:plastic_sheeting",
-     recipe = "plasticbox:plastic_powder",
-})
-
---Register crafts for colored boxes
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_black',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_black'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_blue',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_blue'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_brown',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_brown'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_cyan',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_cyan'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_green',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_green'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_grey',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_grey'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_magenta',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_magenta'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_orange',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_orange'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_pink',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_pink'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_red',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_red'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_violet',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_violet'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_white',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_white'},
-})
-minetest.register_craft({
-     type = "shapeless",
-     output = 'plasticbox:plasticbox_yellow',
-     recipe = {'plasticbox:plasticbox', 'group:basecolor_yellow'},
-})
-
---ugly below here.
-
-if minetest.get_modpath("moreblocks") then
-                        register_stair(
-                                "plasticbox",
-                                "plasticbox",
-                                "plasticbox:plasticbox",
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                { "plasticbox.png",
-                                },
-                                "Plastic",
-                                "plasticbox",
-                                0
-                        )
-                        register_slab(
-                                "plasticbox",
-                                "plasticbox",
-                                "plasticbox:plasticbox",
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                { "plasticbox.png",
-                                },
-                                "Plastic",
-                                "plasticbox",
-                                0
-                        )
-
-                        register_panel(
-                                "plasticbox",
-                                "plasticbox",
-                                "plasticbox:plasticbox",
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                { "plasticbox.png",
-                                },
-                                "Plastic",
-                                "plasticbox",
-                                0
-                        )
-
-                        register_micro(
-                                "plasticbox",
-                                "plasticbox",
-                                "plasticbox:plasticbox",
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                { "plasticbox.png",
-                                },
-                                "Plastic",
-                                "plasticbox",
-                                0
-                        )
-		table.insert(circular_saw.known_stairs, "plasticbox:plasticbox")
-
-end
-
-
-
-for i in ipairs(plasticbox.colorlist) do
-        local colorname = plasticbox.colorlist[i][1]
-        local desc = plasticbox.colorlist[i][2]
-
-		if minetest.get_modpath("moreblocks") then
-                        register_stair(
-                                "plasticbox",
-                                "plasticbox_"..colorname,
-                                "plasticbox:plasticbox_"..colorname,
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                {        "plasticbox_"..colorname..".png",
-                                },
-                                desc,
-                                "plasticbox_"..colorname,
-                                0
-                        )
-                        register_slab(
-                                "plasticbox",
-                                "plasticbox_"..colorname,
-                                "plasticbox:plasticbox_"..colorname,
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                {        "plasticbox_"..colorname..".png",
-                                },
-                                desc,
-                                "plasticbox_"..colorname,
-                                0
-                        )
-
-                        register_panel(
-                                "plasticbox",
-                                "plasticbox_"..colorname,
-                                "plasticbox:plasticbox_"..colorname,
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                {        "plasticbox_"..colorname..".png",
-                                },
-                                desc,
-                                "plasticbox_"..colorname,
-                                0
-                        )
-
-                        register_micro(
-                                "plasticbox",
-                                "plasticbox_"..colorname,
-                                "plasticbox:plasticbox_"..colorname,
-                                { snappy=1,choppy=2,oddly_breakable_by_hand=1,flammable=2,not_in_creative_inventory=1 },
-                                {        "plasticbox_"..colorname..".png",
-                                },
-                                desc,
-                                "plasticbox_"..colorname,
-                                0
-                        )
-		table.insert(circular_saw.known_stairs, "plasticbox:plasticbox_"..colorname)
-
-	end
-end
-
---Crafting recipes involving other mods
-if minetest.get_modpath("bucket") then
-minetest.register_craft( {
-        output = "bucket:bucket_empty",
-        recipe = {
-                { "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" },
-                { "", "homedecor:plastic_sheeting", "" },
-        },
-})
-end
