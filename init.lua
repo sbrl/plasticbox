@@ -6,7 +6,7 @@ minetest.register_node("plasticbox:plasticbox", {
 	sounds = default.node_sound_stone_defaults(),
 	paramtype2 = "color",
 	palette = "unifieddyes_palette.png",
-	on_destruct = unifieddyes.on_destruct,
+	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = unifieddyes.on_rightclick,
 })
 
